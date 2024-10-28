@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 
 const WalletCard = () => {
@@ -42,8 +42,21 @@ const WalletCard = () => {
         window.location.reload();
     };
 
-    window.ethereum.on('accountsChanged', accountChangedHandler);
-    window.ethereum.on('chainChanged', chainChangedHandler);
+    
+    useEffect(() => {
+        if (window.ethereum) {
+            window.ethereum.on('accountsChanged', accountChangedHandler);
+            window.ethereum.on('chainChanged', chainChangedHandler);
+        }
+
+        
+        return () => {
+            if (window.ethereum) {
+                window.ethereum.removeListener('accountsChanged', accountChangedHandler);
+                window.ethereum.removeListener('chainChanged', chainChangedHandler);
+            }
+        };
+    }, []); 
 
     return (
         <div className='walletCard'>
