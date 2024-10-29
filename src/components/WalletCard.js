@@ -1,7 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Wallet, Link, AlertCircle, Check, Loader2 } from "lucide-react";
 
 const SUPPORTED_NETWORKS = {
@@ -131,7 +128,7 @@ const WalletCard = () => {
         }
       });
 
-      
+      // Check if already connected
       window.ethereum.request({ method: 'eth_accounts' })
         .then(accounts => {
           if (accounts.length > 0) {
@@ -150,26 +147,29 @@ const WalletCard = () => {
 
   return (
     <div className="min-h-screen bg-black p-6">
-      <Card className="w-full max-w-xl mx-auto bg-zinc-900 border-zinc-800">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-zinc-100">
+      <div className="w-full max-w-xl mx-auto rounded-lg bg-zinc-900 border border-zinc-800 overflow-hidden">
+        <div className="p-6 border-b border-zinc-800">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-zinc-100">
             <Wallet className="w-6 h-6" />
             Ethereum Wallet
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
+          </h2>
+        </div>
+        
+        <div className="p-6">
           {wallet.error && (
-            <Alert variant="destructive" className="mb-4 bg-red-900/20 border-red-900">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{wallet.error}</AlertDescription>
-            </Alert>
+            <div className="mb-4 p-4 rounded-lg bg-red-900/20 border border-red-900 text-red-300">
+              <div className="flex gap-2 items-center">
+                <AlertCircle className="h-4 w-4" />
+                <p>{wallet.error}</p>
+              </div>
+            </div>
           )}
 
           {!wallet.address ? (
-            <Button
+            <button
               onClick={connectWallet}
               disabled={wallet.isConnecting}
-              className="w-full bg-blue-600 hover:bg-blue-700"
+              className="w-full py-2 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white font-medium disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {wallet.isConnecting ? (
                 <>
@@ -182,7 +182,7 @@ const WalletCard = () => {
                   Connect Wallet
                 </>
               )}
-            </Button>
+            </button>
           ) : (
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 rounded-lg bg-zinc-800">
@@ -215,23 +215,21 @@ const WalletCard = () => {
                 <p className="text-sm font-medium text-zinc-200">Switch Network</p>
                 <div className="flex gap-2 flex-wrap">
                   {Object.entries(SUPPORTED_NETWORKS).map(([chainId, name]) => (
-                    <Button
+                    <button
                       key={chainId}
-                      variant="outline"
-                      size="sm"
                       onClick={() => switchNetwork(parseInt(chainId))}
                       disabled={wallet.network?.id === parseInt(chainId)}
-                      className="border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 hover:text-zinc-100"
+                      className="px-3 py-1 text-sm rounded-md border border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 hover:text-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {name}
-                    </Button>
+                    </button>
                   ))}
                 </div>
               </div>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
