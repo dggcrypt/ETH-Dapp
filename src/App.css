@@ -1,14 +1,8 @@
 .App {
-  text-align: center;
   min-height: 100vh;
   background-color: black;
   color: #fafafa;
 }
-
-* {
-  outline-color: #3b82f6;
-}
-
 
 body {
   margin: 0;
