@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
 import { Wallet, Link, AlertCircle, Check, Loader2 } from "lucide-react";
+import { ThemeContext } from '../App';
 
 const SUPPORTED_NETWORKS = {
   1: "Ethereum Mainnet",
@@ -12,6 +13,7 @@ const formatBalance = (balance) => {
 };
 
 const WalletCard = () => {
+  const { isDark } = useContext(ThemeContext);
   const [wallet, setWallet] = useState({
     address: null,
     balance: null,
@@ -146,10 +148,10 @@ const WalletCard = () => {
   }, [updateWalletInfo, wallet.address]);
 
   return (
-    <div className="min-h-screen bg-black p-6">
-      <div className="w-full max-w-xl mx-auto rounded-lg bg-zinc-900 border border-zinc-800 overflow-hidden">
-        <div className="p-6 border-b border-zinc-800">
-          <h2 className="flex items-center gap-2 text-xl font-bold text-zinc-100">
+    <div className={`min-h-screen p-6 ${isDark ? 'bg-black' : 'bg-white'}`}>
+      <div className={`w-full max-w-xl mx-auto rounded-lg ${isDark ? 'bg-zinc-900 border-zinc-800' : 'bg-white border-gray-200'} border overflow-hidden`}>
+        <div className={`p-6 border-b ${isDark ? 'border-zinc-800' : 'border-gray-200'}`}>
+          <h2 className={`flex items-center gap-2 text-xl font-bold ${isDark ? 'text-zinc-100' : 'text-gray-900'}`}>
             <Wallet className="w-6 h-6" />
             Ethereum Wallet
           </h2>
@@ -185,10 +187,10 @@ const WalletCard = () => {
             </button>
           ) : (
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-4 rounded-lg bg-zinc-800">
+              <div className={`flex items-center justify-between p-4 rounded-lg ${isDark ? 'bg-zinc-800' : 'bg-gray-100'}`}>
                 <div className="space-y-1">
-                  <p className="text-sm font-medium text-zinc-200">Connected Address</p>
-                  <p className="text-xs text-zinc-400 break-all">
+                  <p className={`text-sm font-medium ${isDark ? 'text-zinc-200' : 'text-gray-700'}`}>Connected Address</p>
+                  <p className={`text-xs ${isDark ? 'text-zinc-400' : 'text-gray-500'} break-all`}>
                     {wallet.address}
                   </p>
                 </div>
@@ -196,30 +198,34 @@ const WalletCard = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 rounded-lg bg-zinc-800">
-                  <p className="text-sm font-medium text-zinc-200">Balance</p>
-                  <p className="text-lg font-bold text-zinc-100">
+                <div className={`p-4 rounded-lg ${isDark ? 'bg-zinc-800' : 'bg-gray-100'}`}>
+                  <p className={`text-sm font-medium ${isDark ? 'text-zinc-200' : 'text-gray-700'}`}>Balance</p>
+                  <p className={`text-lg font-bold ${isDark ? 'text-zinc-100' : 'text-gray-900'}`}>
                     {wallet.balance ? `${wallet.balance} ETH` : '...'}
                   </p>
                 </div>
 
-                <div className="p-4 rounded-lg bg-zinc-800">
-                  <p className="text-sm font-medium text-zinc-200">Network</p>
-                  <p className="text-lg font-bold text-zinc-100">
+                <div className={`p-4 rounded-lg ${isDark ? 'bg-zinc-800' : 'bg-gray-100'}`}>
+                  <p className={`text-sm font-medium ${isDark ? 'text-zinc-200' : 'text-gray-700'}`}>Network</p>
+                  <p className={`text-lg font-bold ${isDark ? 'text-zinc-100' : 'text-gray-900'}`}>
                     {wallet.network?.name || '...'}
                   </p>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <p className="text-sm font-medium text-zinc-200">Switch Network</p>
+                <p className={`text-sm font-medium ${isDark ? 'text-zinc-200' : 'text-gray-700'}`}>Switch Network</p>
                 <div className="flex gap-2 flex-wrap">
                   {Object.entries(SUPPORTED_NETWORKS).map(([chainId, name]) => (
                     <button
                       key={chainId}
                       onClick={() => switchNetwork(parseInt(chainId))}
                       disabled={wallet.network?.id === parseInt(chainId)}
-                      className="px-3 py-1 text-sm rounded-md border border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 hover:text-zinc-100 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className={`px-3 py-1 text-sm rounded-md border ${
+                        isDark 
+                          ? 'border-zinc-700 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 hover:text-zinc-100' 
+                          : 'border-gray-300 bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
+                      } disabled:opacity-50 disabled:cursor-not-allowed`}
                     >
                       {name}
                     </button>
