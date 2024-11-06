@@ -81,6 +81,4 @@ Current version: 1.0.0
 ## 📝 License
 This project is open source and available under the [MIT License](LICENSE).
 
----
 
-Made with ❤️ and ☕ by [Diego]
