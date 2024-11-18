@@ -4,14 +4,14 @@ Hey there! 👋 Welcome to my Ethereum wallet dapp. This is a simple but powerfu
 
 ## 🌟 Features
 
-- **Easy Wallet Connection**: Connect your MetaMask wallet with just one click
+- **Easy Wallet Connection**: Connect your MetaMask wallet 
 - **Real-time Balance**: See your ETH balance instantly
 - **Network Switching**: Easily switch between different Ethereum networks:
   - Ethereum Mainnet
   - Goerli Testnet
   - Sepolia Testnet
-- **Dark/Light Mode**: Easy on the eyes with a theme toggle that lets you switch between dark and light modes
-- **Responsive Design**: Looks great on both desktop and mobile
+- **Dark/Light Mode**: Easy on the eyes with a theme  that lets you switch between dark and light modes
+
 
 ## 🚀 Getting Started
 
@@ -37,14 +37,14 @@ npm install
 npm start
 ```
 
-5. Head over to `http://localhost:3000` in your browser and you're good to go!
+
 
 ## 📱 How to Use
 
 1. Make sure you have MetaMask installed in your browser
 2. Click the "Connect Wallet" button
 3. Accept the connection in MetaMask
-4. That's it! You'll see your:
+4. That's it You'll see your:
    - Wallet address
    - ETH balance
    - Current network
@@ -75,8 +75,7 @@ Found a bug? Want to add something cool? Feel free to:
 4. Push to the branch (`git push origin cool-new-feature`)
 5. Open a Pull Request
 
-## 🌐 Version
-Current version: 1.0.0
+
 
 ## 📝 License
 This project is open source and available under the [MIT License](LICENSE).
