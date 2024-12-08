@@ -1,8 +1,8 @@
-# Ethereum Wallet Dapp 🦊
+# Ethereum Wallet Dapp 
 
-Hey there! 👋 Welcome to my Ethereum wallet dapp. This is a simple but powerful web app that lets you connect your MetaMask wallet and manage your Ethereum accounts with a clean, modern interface.
 
-## 🌟 Features
+
+##  Features
 
 - **Easy Wallet Connection**: Connect your MetaMask wallet 
 - **Real-time Balance**: See your ETH balance instantly
@@ -13,9 +13,7 @@ Hey there! 👋 Welcome to my Ethereum wallet dapp. This is a simple but powerfu
 - **Dark/Light Mode**: Easy on the eyes with a theme  that lets you switch between dark and light modes
 
 
-## 🚀 Getting Started
 
-Want to run this locally? Here's how:
 
 1. Clone the repo:
 ```bash
@@ -38,46 +36,5 @@ npm start
 ```
 
 
-
-## 📱 How to Use
-
-1. Make sure you have MetaMask installed in your browser
-2. Click the "Connect Wallet" button
-3. Accept the connection in MetaMask
-4. That's it You'll see your:
-   - Wallet address
-   - ETH balance
-   - Current network
-   - Network switching options
-   
-Want to switch themes? Just hit the sun/moon icon in the top right corner! 🌓
-
-## 🛠️ Built With
-
-- React
-- Tailwind CSS
-- Ethers.js
-- MetaMask API
-- lucide-react (for those sweet icons)
-
-## 💡 Good to Know
-
-- Your wallet needs to be connected to see your balance
-- Switching networks might take a second or two
-- If you disconnect your MetaMask, just hit refresh and connect again
-
-## 🤝 Contributing
-
-Found a bug? Want to add something cool? Feel free to:
-1. Fork it
-2. Create your feature branch (`git checkout -b cool-new-feature`)
-3. Commit your changes (`git commit -m 'Added something cool!'`)
-4. Push to the branch (`git push origin cool-new-feature`)
-5. Open a Pull Request
-
-
-
-## 📝 License
-This project is open source and available under the [MIT License](LICENSE).
 
 
